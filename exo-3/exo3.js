@@ -15,9 +15,8 @@ function getRandomInt(max) {
  * @param arr
  * @returns {*}
  */
-function getComputerChoice(arr){
-    //cc = onsole.log(arr[getRandomInt(3)]);
-    return arr[getRandomInt(3)];
+function getComputerChoice(valideChoice){
+    return valideChoice[getRandomInt(3)];
 }
 
 /**
@@ -26,21 +25,12 @@ function getComputerChoice(arr){
  * @returns {*}
  */
 function getUserChoice(elem){
-    if (Tools.contains(elem)){
+    if (Tools.indexOf(elem) > -1){
         return elem;
     }else{
         console.log("Error ! sur l'entrée de l'utilisateur");
     }
 }
-Array.prototype.contains = function(elem)
-{
-    for (var i in this)
-    {
-        if (this[i] == elem) return true;
-    }
-    return false;
-}
-
 /**
  *
  * @param user

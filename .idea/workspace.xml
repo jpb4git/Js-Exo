@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="99ec4483-6a4f-434b-ba0a-0a2ec4c5c98d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/exo-1/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/exo-1/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exo-4/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/exo-4/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exo-2/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/exo-2/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exo-3/exo3.js" beforeDir="false" afterPath="$PROJECT_DIR$/exo-3/exo3.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exo-5/exo5.js" beforeDir="false" afterPath="$PROJECT_DIR$/exo-5/exo5.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,11 +19,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/exo-4/script.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/exo-5/exo5.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+            <state relative-caret-position="529">
+              <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -30,8 +31,42 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exo-1/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+            <state relative-caret-position="23">
+              <caret line="1" column="21" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/exo-4/script.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="12" column="1" lean-forward="true" selection-start-line="3" selection-end-line="12" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/exo-2/script.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/exo-3/exo3.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+              <folding>
+                <element signature="n#!!doc;n#getRandomInt#0" />
+                <element signature="n#!!doc;n#getComputerChoice#0" />
+                <element signature="n#!!doc;n#getUserChoice#0" />
+                <element signature="e#584#683#0" />
+                <element signature="n#!!doc;n#determineWinner#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,10 +82,11 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/exo-0/index.html" />
         <option value="$PROJECT_DIR$/exo-2/index.html" />
-        <option value="$PROJECT_DIR$/exo-2/script.js" />
-        <option value="$PROJECT_DIR$/exo-3/exo3.js" />
         <option value="$PROJECT_DIR$/exo-1/script.js" />
         <option value="$PROJECT_DIR$/exo-4/script.js" />
+        <option value="$PROJECT_DIR$/exo-5/exo5.js" />
+        <option value="$PROJECT_DIR$/exo-2/script.js" />
+        <option value="$PROJECT_DIR$/exo-3/exo3.js" />
       </list>
     </option>
   </component>
@@ -79,12 +115,22 @@
             <path>
               <item name="begin-js" type="b2602c69:ProjectViewProjectNode" />
               <item name="begin-js" type="462c0819:PsiDirectoryNode" />
+              <item name="exo-2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="begin-js" type="b2602c69:ProjectViewProjectNode" />
+              <item name="begin-js" type="462c0819:PsiDirectoryNode" />
               <item name="exo-3" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="begin-js" type="b2602c69:ProjectViewProjectNode" />
               <item name="begin-js" type="462c0819:PsiDirectoryNode" />
               <item name="exo-4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="begin-js" type="b2602c69:ProjectViewProjectNode" />
+              <item name="begin-js" type="462c0819:PsiDirectoryNode" />
+              <item name="exo-5" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -122,24 +168,24 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554878260517</updated>
-      <workItem from="1554878263436" duration="20947000" />
+      <workItem from="1554878263436" duration="23372000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20947000" />
+    <option name="totallyTimeSpent" value="23372000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16148068" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16148068" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.18113612" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.18113612" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -185,52 +231,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exo-2/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="48" column="22" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/exo-2/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exo-3/exo3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="101" lean-forward="true" selection-start-line="101" selection-end-line="101" />
-          <folding>
-            <element signature="n#!!doc;n#getRandomInt#0" />
-            <element signature="n#!!block;n#getRandomInt#0" />
-            <element signature="n#!!doc;n#getComputerChoice#0" />
-            <element signature="n#!!block;n#getComputerChoice#0" />
-            <element signature="n#!!doc;n#getUserChoice#0" />
-            <element signature="n#!!block;n#getUserChoice#0" />
-            <element signature="e#351#379#0" />
-            <element signature="e#383#452#0" />
-            <element signature="e#90#189#0" />
-            <element signature="e#527#576#0" />
-            <element signature="n#!!doc;n#determineWinner#0" />
-            <element signature="n#!!block;n#determineWinner#0" />
-            <element signature="e#813#829#0" />
-            <element signature="e#825#841#0" />
-            <element signature="e#855#1111#0" />
-            <element signature="e#895#919#0" />
-            <element signature="e#943#975#0" />
-            <element signature="e#992#1024#0" />
-            <element signature="e#1082#1231#0" />
-            <element signature="e#1126#1171#0" />
-            <element signature="e#1175#1221#0" />
-            <element signature="e#1269#1418#0" />
-            <element signature="e#1313#1358#0" />
-            <element signature="e#1362#1408#0" />
-            <element signature="n#!!block;n#playGame#0" />
-            <element signature="e#788#873#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -240,17 +244,45 @@
     <entry file="file://$PROJECT_DIR$/exo-4/index.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/exo-1/script.js">
+    <entry file="file://$PROJECT_DIR$/exo-4/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        <state relative-caret-position="276">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="3" selection-end-line="12" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exo-4/script.js">
+    <entry file="file://$PROJECT_DIR$/exo-5/exo5.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="47" />
+        <state relative-caret-position="529">
+          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exo-1/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exo-2/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exo-3/exo3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="17" column="41" selection-start-line="17" selection-start-column="41" selection-end-line="17" selection-end-column="41" />
+          <folding>
+            <element signature="n#!!doc;n#getRandomInt#0" />
+            <element signature="n#!!doc;n#getComputerChoice#0" />
+            <element signature="n#!!doc;n#getUserChoice#0" />
+            <element signature="e#584#683#0" />
+            <element signature="n#!!doc;n#determineWinner#0" />
+          </folding>
         </state>
       </provider>
     </entry>

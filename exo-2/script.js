@@ -17,7 +17,12 @@ function isregistered(run) {
     }
     return run;
 }
-
+/*
+12.30
+desk
+11 h
+9.30
+*/
 
 function Depart(run) {
 
@@ -61,6 +66,10 @@ console.log(romain.age);
 console.log(romain.number);
 console.log(romain.isRegistered);
 
-
-
+romain.age = 21;
+romain.isRegistered = false;
+Depart(romain);
+romain = isregistered(romain);
+console.log('après registration');
+Depart(romain);
 
