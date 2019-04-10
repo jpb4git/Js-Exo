@@ -7,19 +7,19 @@
 
         <h1>Exercice 0</h1>
 
-        <script type="text/javascript">
+        <script type="text/javascript"> // je déclare un debut de section javascript
 
         /* Section 1 */   
 
-        var name = "Joe";
-        var city = 'London';
-        var age = 32;
-        var isRed = true;
-        var isOld = age > 80;
+        var name = "Joe"; // je déclare une variable nommée name qui prend pour valeur la chaine de caractère "Joe".
+        var city = 'London'; // je déclare une variable nommée city qui prend pour valeur la chai,e de caractère "London".
+        var age = 32; // je déclare une variable nommée age qui prend pour valeur l'entier 32.
+        var isRed = true; // je déclare une variable nommée isRed qui prend pour valeur  true (boolean value).
+        var isOld = age > 80;// je déclare une variable nommée isOld qui prend pour valeur  le resultat boolean du test logique (age > 80).
 
-        var previousJobs = ['lawyer', 'developper', 'Professionnal climber'];
+        var previousJobs = ['lawyer', 'developper', 'Professionnal climber']; // je déclare une variable nommée previousJobs de type Array qui prend pour valeur  des chaines de caractères 'lawyer', 'developper', 'Professionnal climber'.
 
-        function info(height, weight) {
+        function info(height, weight) {// declaration et implementation d'une fonction nommée info qui prend deux parametres
             if (height > 180) {
                 console.log('Vous êtes grand');
             }
@@ -32,34 +32,34 @@
             }
         }
 
-        info(165, 45);
+        info(165, 45); // appel de fonction nommée info
 
-        var myHeight = 175;
-        var myWeight = 86;
+        var myHeight = 175;// je déclare une variable nommée myHeight qui prend pour valeur l'entier 175.
+        var myWeight = 86;// je déclare une variable nommée myWeight qui prend pour valeur l'entier 86.
 
-        info(myHeight, myWeight);
+        info(myHeight, myWeight);// appel de fonction nommée info
 
-        info(myHeight + 15, myWeight - 100);
+        info(myHeight + 15, myWeight - 100); // appel de fonction nommée info
 
-        function toUpper(variable) {
-            return variable.toUpperCase();
+        function toUpper(variable) { // declaration et implementation d'une fonction nommée toUpper qui prend un parametre
+            return variable.toUpperCase(); // et qui renvoie une chaine de caractères
         }
 
-        var upperName = toUpper(name);
+        var upperName = toUpper(name); // appel de fonction toUpper() avec le parametre name puis stockée dans une variable nommée upperName
 
-        for (i = 0; i < 3; i = i + 1) {
-            console.log(previousJobs[i]);
+        for (i = 0; i < 3; i = i + 1) { // boucle itérative
+            console.log(previousJobs[i]); //affichage de la chaine de caractère placée dans le tableau previousJobs à l'indice i
         }
 
         /* Section 2: */
 
         // afficher la ville dans laquelle Joe vit.
-
+        console.log(city);
         // afficher si Joe est roux ou pas.
-
+        console.log(isRed);
         /* Section 3 */
 
-        // console.log(myVariable);
+         console.log(myVariable); // une erreur ici myVariable is not defined
 
         </script>
 
