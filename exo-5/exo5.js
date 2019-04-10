@@ -18,5 +18,5 @@ let input = prompt("Tape your text here : ").toLowerCase();
 let resulArray = [];
 
 resulArray = removeFromArr(vowels,input);
-console.log(resulArray.join());
+console.log(resulArray.join().toUpperCase());
 
