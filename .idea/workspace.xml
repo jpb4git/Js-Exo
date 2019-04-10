@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="99ec4483-6a4f-434b-ba0a-0a2ec4c5c98d" name="Default Changelist" comment="" />
+    <list default="true" id="99ec4483-6a4f-434b-ba0a-0a2ec4c5c98d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/exo-1/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/exo-1/script.js" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,28 +26,32 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/exo-1/script.js">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="207">
+              <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.MD">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="184">
-                <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+              <first_editor relative-caret-position="276">
+                <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
               </first_editor>
               <second_editor />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exo-0/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+            <state relative-caret-position="619">
+              <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
             </state>
           </provider>
         </entry>
@@ -60,6 +66,7 @@
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/exo-0/index.html" />
+        <option value="$PROJECT_DIR$/exo-1/script.js" />
       </list>
     </option>
   </component>
@@ -79,16 +86,6 @@
             <path>
               <item name="begin-js" type="b2602c69:ProjectViewProjectNode" />
               <item name="begin-js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="begin-js" type="b2602c69:ProjectViewProjectNode" />
-              <item name="begin-js" type="462c0819:PsiDirectoryNode" />
-              <item name="exo-0" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="begin-js" type="b2602c69:ProjectViewProjectNode" />
-              <item name="begin-js" type="462c0819:PsiDirectoryNode" />
-              <item name="exo-1" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -126,12 +123,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554878260517</updated>
-      <workItem from="1554878263436" duration="3017000" />
+      <workItem from="1554878263436" duration="4949000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3017000" />
+    <option name="totallyTimeSpent" value="4949000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
@@ -169,26 +166,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exo-1/script.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.MD">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="184">
-            <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/exo-0/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="619">
+          <caret line="62" lean-forward="true" selection-start-line="62" selection-end-line="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/exo-1/index.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/exo-0/index.html">
+    <entry file="file://$PROJECT_DIR$/README.MD">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="276">
+            <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exo-1/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
+        <state relative-caret-position="207">
+          <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
         </state>
       </provider>
     </entry>
