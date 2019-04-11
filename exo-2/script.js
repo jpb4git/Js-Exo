@@ -2,12 +2,12 @@
 
 
 function runner(age) {
-    let obj = {};
-    obj.age = age;
-    obj.isRegistered = false;
-    obj.number = Math.floor(Math.random() * 1000);
+    let runner = {};
+    runner.age = age;
+    runner.isRegistered = false;
+    runner.number = Math.floor(Math.random() * 1000);
 
-    return obj;
+    return runner;
 }
 
 function isregistered(run) {
@@ -17,55 +17,42 @@ function isregistered(run) {
     }
     return run;
 }
-/*
-12.30
-desk
-11 h
-9.30
-*/
+function depart(run) {
 
-function Depart(run) {
 
-    if (run.age >= 18) {
-        if (run.age >= 18 && run.isRegistered) {
-            console.log('\'You will race at 9:30 am' + 'Dossard : ' + run.number);
-        } else {
-            if (run.age >= 18 || run.isRegistered) {
-                console.log('You will race at 11:00 am' + 'Dossard : ' + run.number);
-            }
-        }
-
-    } else {
-
-        if (run.isRegistered) {
-            if (run.age < 18 && run.isRegistered) {
-                console.log('Go the desk');
-            }
-        } else {
-            if (run.age < 18 || !run.isRegistered) {
-                console.log('\'You will race at 12:30 am' + 'Dossard : ' + run.number);
-            }
-
-        }
+    if (run.age > 18 && run.isRegistered){
+        console.log('\'You will race at 9:30 am' + 'Dossard : ' + run.number);
+    }else if(run.age > 18 && !run.isRegistered){
+        console.log('You will race at 11:00 am' + 'Dossard : ' + run.number);
+    }else if (run.age < 18 && run.isRegistered){
+        console.log('\'You will race at 12:30 am' + 'Dossard : ' + run.number);
+    }else{
+        console.log('registration Desk  !')
     }
+
 }
 
 
 let romain = runner(15);
 
-console.log(romain.age);
-console.log(romain.number);
-console.log(romain.isRegistered);
+//console.log(romain.age);
+//console.log(romain.number);
+//console.log(romain.isRegistered);
+console.log('romain 15 ans unregistered')
 console.log('avant registration');
-Depart(romain);
+depart(romain);
 romain = isregistered(romain);
 console.log('après registration');
-Depart(romain);
+depart(romain);
 
-console.log(romain.age);
-console.log(romain.number);
-console.log(romain.isRegistered);
 
+
+
+//console.log(romain.age);
+//console.log(romain.number);
+//console.log(romain.isRegistered);
+console.log('romain 21 ans unregistered');
+console.log('avant registration');
 romain.age = 21;
 romain.isRegistered = false;
 Depart(romain);

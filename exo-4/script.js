@@ -1,6 +1,8 @@
 // you can write js here
 console.log('exo-4');
 
+
+// travail sur une copie et afficher les deux en fin
 function removeFromArr(ElementToRemove, arr){
 
     for (i = 0; i < arr.length;i++){
@@ -14,37 +16,39 @@ return arr;
 
 var elRemove =['get', 'right', 'the', 'first', 'time,'];
 var secretMessage = ["Learning", "isn't", "about", "what", "you", "get", "easily", "the", "first", "time,", "it's", "about", "what", "you", "can", "figure", "out.", "-2015,", "Chris", "Pine,", "Learn", "JavaScript"];
+var temp = ["Learning", "isn't", "about", "what", "you", "get", "easily", "the", "first", "time,", "it's", "about", "what", "you", "can", "figure", "out.", "-2015,", "Chris", "Pine,", "Learn", "JavaScript"];
 
-let temp = secretMessage;
+//let temp = secretMessage; // PAR REF !!!
 
-console.log(secretMessage);
+console.log(temp);
 
 
 //1
-secretMessage.pop(); //remove from the end
-console.log(secretMessage);
+temp.pop(); //remove from the end
+console.log(temp);
 
 //2
 //add two elements on this array
-temp = secretMessage.push('to', 'program');
-console.log(secretMessage);
+temp2 = temp.push('to', 'program');
+console.log(temp);
 
 
 //3 remplace l'element selectionné par un autre
-secretMessage[secretMessage.indexOf('easily')] = 'right';
-console.log(secretMessage);
+temp[temp.indexOf('easily')] = 'right';
+console.log(temp);
 
 //4 supprime le premier element
-secretMessage.shift();
-console.log(secretMessage);
+temp.shift();
+console.log(temp);
 
 //5 ajoute un element à la premiere place
-secretMessage.unshift('Programming');
-console.log(secretMessage);
+temp.unshift('Programming');
+console.log(temp);
 
 //6
-secretMessage = removeFromArr(elRemove,secretMessage);
-console.log(secretMessage);
+temp = removeFromArr(elRemove,temp);
+console.log(temp);
 
 //7
 console.log(secretMessage.join());
+console.log(temp.join());

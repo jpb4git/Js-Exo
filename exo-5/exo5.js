@@ -1,6 +1,13 @@
 // you can write js here
-
 console.log('exo-5');
+let vowels = ['a','e','i','o','u'];
+let input = prompt("Tape your text here : ").toLowerCase();
+let resulArray = [];
+
+
+resulArray = removeFromArr(vowels,input);
+console.log(resulArray.join().toUpperCase());
+
 
 function removeFromArr(ElementToRemove, arr){
     let resultArr = [];
@@ -13,10 +20,5 @@ function removeFromArr(ElementToRemove, arr){
 }
 
 
-let vowels = ['a','e','i','o','u'];
-let input = prompt("Tape your text here : ").toLowerCase();
-let resulArray = [];
 
-resulArray = removeFromArr(vowels,input);
-console.log(resulArray.join().toUpperCase());
 

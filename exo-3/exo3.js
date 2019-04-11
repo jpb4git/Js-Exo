@@ -1,6 +1,20 @@
 // you can write js here
 console.log('exo-3');
+const GAME_MAX= 3;
+let tools =['rock','paper','scissors','bomb'];
+playGame();
 
+function playGame(){
+
+    let uCHoice = getUserChoice(prompt("ROck paper scissors ? : ").toLowerCase());
+    let cChoice = getComputerChoice(tools);
+    console.log('User : ' +  uCHoice);
+    console.log('Computer :'+ cChoice);
+    console.log(determineWinner(uCHoice,cChoice));
+}
+
+//------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 /**
  *
  * @param max
@@ -16,7 +30,8 @@ function getRandomInt(max) {
  * @returns {*}
  */
 function getComputerChoice(valideChoice){
-    return valideChoice[getRandomInt(3)];
+
+    return valideChoice[getRandomInt(GAME_MAX)];
 }
 
 /**
@@ -25,7 +40,7 @@ function getComputerChoice(valideChoice){
  * @returns {*}
  */
 function getUserChoice(elem){
-    if (Tools.indexOf(elem) > -1){
+    if (tools.indexOf(elem) > -1){
         return elem;
     }else{
         console.log("Error ! sur l'entrée de l'utilisateur");
@@ -74,18 +89,6 @@ function determineWinner(userChoice,computerChoice){
 }
 
 
-function playGame(){
-
-    let uCHoice = getUserChoice(prompt("ROck paper scissors ? : ").toLowerCase());
-    let cChoice = getComputerChoice(Tools);
-    console.log('User : ' +  uCHoice);
-    console.log('Computer :'+ cChoice);
-    console.log(determineWinner(uCHoice,cChoice));
-}
-/**-------------------------------------------------------------------------------**/
-let Tools =['rock','paper','scissors','bomb'];
-
-playGame();
 
 
 
