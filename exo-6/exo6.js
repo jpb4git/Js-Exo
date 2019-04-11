@@ -51,11 +51,11 @@ var team = {
     },
     findOlder: function () {
         let older = this._players[0].age;
-        this._players.forEach(function (element) {
+        this._players.forEach((element) =>{
             if (element.age > older) {
                 older = element.age;
             }
-        });
+        })
         console.log("le joueur le plus agé : " + older + " ans");
 
     },
