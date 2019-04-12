@@ -14,7 +14,7 @@ window.onload = function () {
  *
  * @param data
  */
-function searchByCategory(data,false) {
+function searchByCategory(data) {
     document.getElementById('main').innerHTML = "";
     selectionUser = [];
     setUserArray(data, false);
