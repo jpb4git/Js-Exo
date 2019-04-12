@@ -14,7 +14,7 @@ window.onload = function () {
  *
  * @param data
  */
-function searchByCategory(data) {
+function searchByCategory(data,false) {
     document.getElementById('main').innerHTML = "";
     selectionUser = [];
     setUserArray(data, false);
@@ -29,7 +29,8 @@ function allProducts(data) {
     selectionUser = [];
     data.forEach((node) => {
         selectionUser.push(node);
-});
+})
+    ;
     feedDocumentWithTable();
 }
 
@@ -42,10 +43,7 @@ function setUserArray(jsdata, AllProduct) {
     var ShowNoStock = document.getElementById("noStock").checked;
     // crate th json User selection
     jsdata.forEach((node) => {
-        if(
-    !AllProduct
-)
-    {
+        if(!AllProduct){
         if (myType === node.type || myType === node.traduction) {
             if (node.quantity == 0) {
                 if (ShowNoStock) {
