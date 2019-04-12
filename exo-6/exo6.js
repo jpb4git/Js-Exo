@@ -43,10 +43,14 @@ var team = {
     },
     moyenneAdverse: function () {
         let moyenne = 0;
+        /*
         this._games.forEach(function (element) {
             moyenne += element.OPoints;
         });
-        moyenne /= this._games.length;
+         */
+        //
+        moyenne = (this._games.reduce(function( a , b){return a + b })) / this._games.length ;
+        //moyenne /= this._games.length;
         console.log("Moyenne des points de l'equipe :  " + moyenne);
     },
     findOlder: function () {
