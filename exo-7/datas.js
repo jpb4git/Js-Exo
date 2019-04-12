@@ -52,25 +52,25 @@ var jsonDatas=[
 	},{
 		"name" :"Monopoly",
 		"type" : "game",
-		"description" : "",
+		"description" : "-------------",
 		"price" : 30,
 		"quantity" : 300
 	},{
 		"name" :"Mario Bros",
 		"type" : "videoGame",
-		"description" : "",
+		"description" : "---------------",
 		"price" : 30,
 		"quantity" : 200
 	},{
 		"name" :"Place VIP concert Metallica",
 		"type" : "show",
-		"description" : "",
+		"description" : "--------------------",
 		"price" : 800,
 		"quantity" : 10
 	},{
 		"name" :"Entrée au parc Astérix",
 		"type" : "show",
-		"description" : "",
+		"description" : "----------------",
 		"price" : 30,
 		"quantity" : 200
 	}
