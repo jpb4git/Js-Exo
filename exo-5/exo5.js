@@ -6,13 +6,15 @@ let resulArray = [];
 
 
 resulArray = removeFromArr(vowels,input);
+
+
 console.log(resulArray.join().toUpperCase());
 
 
-function removeFromArr(ElementToRemove, arr){
+function removeFromArr(ElementToKeep, arr){
     let resultArr = [];
     for (i = 0; i < arr.length;i++){
-        if (ElementToRemove.indexOf(arr[i]) > -1){
+        if (ElementToKeep.indexOf(arr[i]) > -1){
             resultArr.push(arr[i]);
         }
     }

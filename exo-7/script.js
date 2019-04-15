@@ -10,6 +10,18 @@ window.onload = function () {
     }
 }
 
+/*document.body.addEventListener('click',function(e){
+   // alert(e.target.id);
+    if(e.target && e.target.id=='Tproducts'){
+        alert('clicked!');
+     }
+ });
+*/
+
+
+
+
+
 /**
  *
  * @param data
@@ -116,11 +128,67 @@ function trierPrix(US) {
 
 /**
  *  ajoute au DOM la table remplie avec lse données Utilisateur
+ * in progress !!! 
  */
 function feedDocumentWithTable() {
     // call json2Table
+   document.getElementById('main').innerHTML = json2Table(selectionUser, 'thead-dark table-striped table-bordered  w-100');
+   var Tp = document.getElementById('Tproducts');
+   TrProduct = Tp.childNodes;
+   
+    // select all rows on table
+    var rows = Tp.getElementsByTagName("tr");
+    // iterate on tr elements 
+    for (i = 0; i < rows.length; i++) {
+        var currentRow = Tp.rows[i];
+        var createOnMouseOverHandler = function(row) {
+        // if i 'm not on th row 
+            if (i > 0){ 
+            return function() {
+            var cell = row.getElementsByTagName("td")[0];
+            resetStyle(Tp);
+            cell.parentNode.style.fontSize = 'xx-large'
+            cell.parentNode.style.backgroundColor = 'black'
+            cell.parentNode.style.color = 'white'
 
-    document.getElementById('main').innerHTML = json2Table(selectionUser, '.thead-dark table-striped table-bordered  w-100');
+            //Tp.rows[i+1].style.fontSize ='x-large';
+            //Tp.rows[i-1].style.fontSize ='x-large';
+
+
+            };
+        }
+      };
+      currentRow.onmouseover = createOnMouseOverHandler(currentRow);
+    }
+   
+   
+
+
+   
+   Tproducts.onclick = function(){
+        //alert('clicked' + this.nodeName);
+        elementMouseIsOver = document.elementFromPoint(event.clientX, event.clientY);
+        resetStyle(Tp);
+        // alert(elementMouseIsOver);
+        elementMouseIsOver.parentNode.style.fontSize = "medium";
+        elementMouseIsOver.parentNode.style.backgroundColor = "orange";
+        elementMouseIsOver.parentNode.style.color = "black";
+     
+      
+      // alert('clicked : ' + elementMouseIsOver.nodeName + ' Inside : ' +elementMouseIsOver.innerText);
+       
+   }
+}
+
+
+
+
+function resetStyle(element){
+    for (var i = 0, row; row = element.rows[i]; i++) {
+     row.style.fontSize = "medium";
+     row.style.backgroundColor = "white";
+     row.style.color = "black";
+    }    
 }
 
 /**
@@ -176,14 +244,21 @@ function json2Table(json, classes) {
     // iteration du json
     json.map(function (row) {
         bodyRows += '<tr class="text-center">';
-        // To do: Loop over object properties and create cells
+        // Loop over object properties and create cells
         cols.map(function (colName) {
             bodyRows += '<td class="text-center">' + row[colName] + '</td>';
         });
         bodyRows += '</tr>';
     });
-    return '<table class="' + classes + '"><thead><tr>' + headerRow + '</tr></thead><tbody>' + bodyRows + '</tbody></table>';
+    return '<table id="Tproducts" class="' + classes + '"><thead><tr>' + headerRow + '</tr></thead><tbody>' + bodyRows + '</tbody></table>';
 }
+
+function json2TableV2(json , classes){
+    var Tproducts = document.createElement('table');
+
+}
+
+
 
 /**
  *
