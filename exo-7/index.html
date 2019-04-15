@@ -76,6 +76,15 @@ _)      \.___.,|     .'
 <h1>Testing JS exo - 7 </h1>
 <div class="row mt-2">
     <div class="col-sm-12 w-100 bg-dark d-flex justify-content-around rounded p-1 m-0">
+            <select class="form-control" id="product-select">
+                    <option value="">--Please choose an option--</option>
+                    <option value="1">Trier par Nom </option>
+                    <option value="2">Trier par prix</option>
+                    <option value="3">Trier par Catégorie </option>
+            </select>    
+            <select class="w-100 p-2 mt-1 mb-1" id="AddSelectType2"></select>
+      
+            
         <button class="btn btn-primary" id="trierNom" name="trierNom" onclick="trierNom(selectionUser)">Trier par nom</button>
         <button class="btn btn-primary" id="trierPrix" name="trierPrix" onclick="trierPrix(selectionUser)">Trier par prix</button>
         <button class="btn btn-primary" id="allProducts" name="allProducts" onclick="allProducts(jsonDatas)">All</button>

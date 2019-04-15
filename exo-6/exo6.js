@@ -30,12 +30,7 @@ var team = {
     },
     sommeMatch: function () {
         let somme = 0;
-        /*
-        for (i = 0 ; i < this._games.length; i++){
-            somme += parseInt(this._games[i].Tpoints);
-
-        }
-        */
+ 
         this._games.forEach(function (element) {
             somme += element.Tpoints;
         });
@@ -43,7 +38,6 @@ var team = {
     },
     moyenneAdverse: function () {
         let moyenne = 0;
-   
         moyenne = (this._games.reduce(function( a , b){return a + b })) / this._games.length ;
         //moyenne /= this._games.length;
         console.log("Moyenne des points de l'equipe :  " + moyenne);

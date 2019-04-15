@@ -5,23 +5,14 @@ let ASC_NUM = true;
 
 window.onload = function () {
     var select = document.getElementById("AddSelectType");
+    var select2 = document.getElementById("AddSelectType2");
     for (var node in jsonTraduction) {
         select.options[select.options.length] = new Option(node, jsonTraduction[node]);
     }
+    for (var node in jsonTraduction) {
+        select2.options[select2.options.length] = new Option(node, jsonTraduction[node]);
+    }
 }
-
-/*document.body.addEventListener('click',function(e){
-   // alert(e.target.id);
-    if(e.target && e.target.id=='Tproducts'){
-        alert('clicked!');
-     }
- });
-*/
-
-
-
-
-
 /**
  *
  * @param data
@@ -133,32 +124,30 @@ function trierPrix(US) {
 function feedDocumentWithTable() {
     // call json2Table
    document.getElementById('main').innerHTML = json2Table(selectionUser, 'thead-dark table-striped table-bordered  w-100');
+   
    var Tp = document.getElementById('Tproducts');
-   TrProduct = Tp.childNodes;
+   //TrProduct = Tp.childNodes;
    
     // select all rows on table
     var rows = Tp.getElementsByTagName("tr");
+    rows
     // iterate on tr elements 
-    for (i = 0; i < rows.length; i++) {
-        var currentRow = Tp.rows[i];
-        var createOnMouseOverHandler = function(row) {
+    for (index = 1; index < rows.length; index++) {
+        var currentRow = Tp.rows[index];
+        Tp.rows[index].style.cursor = "pointer";
+        var createOnMouseOverHandler = function(currentRow,rows,i) {
         // if i 'm not on th row 
-            if (i > 0){ 
-            return function() {
-            var cell = row.getElementsByTagName("td")[0];
-            resetStyle(Tp);
-            cell.parentNode.style.fontSize = 'xx-large'
-            cell.parentNode.style.backgroundColor = 'black'
-            cell.parentNode.style.color = 'white'
-
-            //Tp.rows[i+1].style.fontSize ='x-large';
-            //Tp.rows[i-1].style.fontSize ='x-large';
-
-
-            };
-        }
+           
+                return function() {
+                    resetStyle(Tp);
+                   rows[i].style.fontSize ='16px';
+                   rows[i].style.backgroundColor = "rgb(0,0,0)";
+                   rows[i].style.color = 'white'
+                };
+        
       };
-      currentRow.onmouseover = createOnMouseOverHandler(currentRow);
+
+      currentRow.onmouseover = createOnMouseOverHandler(currentRow,rows,index);
     }
    
    
@@ -166,16 +155,14 @@ function feedDocumentWithTable() {
 
    
    Tproducts.onclick = function(){
-        //alert('clicked' + this.nodeName);
+      
         elementMouseIsOver = document.elementFromPoint(event.clientX, event.clientY);
+
         resetStyle(Tp);
-        // alert(elementMouseIsOver);
-        elementMouseIsOver.parentNode.style.fontSize = "medium";
+        elementMouseIsOver.parentNode.style.fontSize = "16px";
         elementMouseIsOver.parentNode.style.backgroundColor = "orange";
         elementMouseIsOver.parentNode.style.color = "black";
-     
-      
-      // alert('clicked : ' + elementMouseIsOver.nodeName + ' Inside : ' +elementMouseIsOver.innerText);
+    
        
    }
 }
