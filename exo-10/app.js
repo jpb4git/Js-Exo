@@ -105,10 +105,10 @@ function tableDraw(width,height,element,grille,Action,Drop) {
 
   function dropCoin(){
         /// here we drop coin on column 
-        for (i = HEIGHT_GRILLE-1 ; i >= 0; i--){
-                       
+        for (i = HEIGHT_GRILLE-1 ; i >= 0; i--){              
             if( grille [i][this.dataset.index] == EMPTY_CELL ){
                 grille[i][this.dataset.index]= stateColor;
+                checkWinState(i,this.dataset.index);
                 break;
             }    
         }
@@ -116,6 +116,7 @@ function tableDraw(width,height,element,grille,Action,Drop) {
         tableDraw(WIDTH_GRILLE,HEIGHT_GRILLE,document.getElementById('main'),grille,ACTION,NO_DROP);        
 
         // we check if player win the game 
+        checkWinState();
         
         // we change the stateColor
         stateColor = switchStateColor(); 
@@ -135,6 +136,13 @@ function leaveCoin(){
      }else{
         return ORANGE_RINGLESS;
      }
+
+ }
+/**
+ * 
+ */
+ function checkWinState(col,row){
+
 
  }
 
