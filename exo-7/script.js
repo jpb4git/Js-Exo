@@ -1,17 +1,40 @@
 var selectionUser = [];
-
 let ASC = true;
 let ASC_NUM = true;
+
+var triNom = document.getElementById('trierNom');
+
+triNom.addEventListener('click', () => {
+    trierPrix(selectionUser);
+});
+
+var triPrix = document.getElementById('trierPrix');
+
+triPrix.addEventListener('click', () => {
+    trierPrix(selectionUser)
+});
+
+var AllProducts = document.getElementById('allProducts');
+AllProducts.addEventListener('click', () => {
+     allProducts(jsonDatas)
+});
+
+
 
 window.onload = function () {
     var select = document.getElementById("AddSelectType");
     var select2 = document.getElementById("AddSelectType2");
+
     for (var node in jsonTraduction) {
         select.options[select.options.length] = new Option(node, jsonTraduction[node]);
     }
+    
     for (var node in jsonTraduction) {
         select2.options[select2.options.length] = new Option(node, jsonTraduction[node]);
     }
+
+
+
 }
 /**
  *
