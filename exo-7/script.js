@@ -221,7 +221,7 @@ function AjoutProduit() {
 
     let product = {
         "name": document.getElementById("addName").value,
-        "type": document.getElementById("addName").value,
+        "type": document.getElementById("AddSelectType").value,
         "description": document.getElementById("addDesc").value,
         "price": document.getElementById("addPrice").value,
         "quantity": document.getElementById("addQts").value,
