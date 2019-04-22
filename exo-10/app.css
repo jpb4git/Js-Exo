@@ -1,11 +1,38 @@
+body{
+    /*background-color: aquamarine;*/
+}
+* {
+  box-sizing: border-box;
+}
+table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 85px;
+}
+td {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 85px;
+ 
+}
+
+
+
+
+
 #header{
     width: 640px;
+    background-color: antiquewhite;
     margin:auto;
     display: flex;
     flex-wrap: wrap;
-    perspective:1000px;
+   /* perspective:1000px;*/
+    
+    z-index: 2;
 }
 #main {
+    z-index: 1;
     width: 640px;
     height: 640px;
     margin: auto;
@@ -15,12 +42,113 @@
   }
 
   .grilleNode{
-      width: 6.5em;
-      height: 6.5em;
+      width: 4.5em;
+      height: 4.5em;
   }
   .tdBg {
-      background-color: #374548!important;
+      z-index: 0;
+      background-color: #77878a!important;
       box-shadow: 5px 3px 3px black;
+      opacity: 0.5;
   }
+
+  .win{
+      z-index: 1000;
+      position: fixed;
+      top :0;
+      left : 0;
+      opacity: 0.5;  
+      width: 100vw;
+      height:100vh;
+      margin:auto;
+
+  }
+  .win img{
+      display: block;
+      width:50%;
+      animation: example 2s infinite;
+  }
+  .win h1, img{
+      text-align: center;
+      margin:auto;
+  }
+
+  @keyframes example {
+    from {transform : rotateY(0deg)}
+    to {transform : rotateY(360deg)}
+}
+
+.moveCoin1{  
+ position: absolute;
+ animation: CoinAnimate 1s;
+ top:0px;
+ left:0px;
+}
+
+.moveCoin2{  
+ position: absolute;
+ animation: CoinAnimate 1s;
+ top:0px;
+ left:85px;
+}
+
+.moveCoin3{  
+ position: absolute;
+ animation: CoinAnimate 1s;
+ top:0px;
+ left:170px;
+}
+.moveCoin4{  
+ position: absolute;
+ animation: CoinAnimate 1s;
+ top:0px;
+ left:255px;
+}
+
+.moveCoin5{  
+ position: absolute;
+ animation: CoinAnimate 1s;
+ top:0px;
+ left:340px;
+}
+
+.moveCoin6{  
+ position: absolute;
+ animation: CoinAnimate 1s;
+ top:0px;
+ left:425px;
+}
+
+
+@keyframes CoinAnimate2{
+    from {transform : translateY(0)}
+    to {transform : translateY(77px)}
+
+}
+
+@keyframes CoinAnimate3{
+    from {transform : translateY(0)}
+    to {transform : translateY(155px)}
+
+}
+
+@keyframes CoinAnimate4{
+    from {transform : translateY(0)}
+    to {transform : translateY(233px)}
+
+}
+
+@keyframes CoinAnimate5{
+    from {transform : translateY(0)}
+    to {transform : translateY(312px)}
+
+}
+
+@keyframes CoinAnimate6{
+    from {transform : translateY(0)}
+    to {transform : translateY(390px)}
+
+}
+
 
   
