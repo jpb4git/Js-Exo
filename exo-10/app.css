@@ -1,6 +1,4 @@
-body{
-    /*background-color: aquamarine;*/
-}
+
 * {
   box-sizing: border-box;
 }
@@ -23,12 +21,11 @@ td {
 
 #header{
     width: 640px;
-    background-color: antiquewhite;
+    
     margin:auto;
     display: flex;
     flex-wrap: wrap;
    /* perspective:1000px;*/
-    
     z-index: 2;
 }
 #main {
@@ -49,7 +46,7 @@ td {
       z-index: 0;
       background-color: #77878a!important;
       box-shadow: 5px 3px 3px black;
-      opacity: 0.5;
+      opacity: 0.9;
   }
 
   .win{
@@ -78,46 +75,17 @@ td {
     to {transform : rotateY(360deg)}
 }
 
-.moveCoin1{  
+.moveCoin{  
  position: absolute;
  animation: CoinAnimate 1s;
  top:0px;
  left:0px;
+ 
+}
+.main img{
+z-index: 1010;
 }
 
-.moveCoin2{  
- position: absolute;
- animation: CoinAnimate 1s;
- top:0px;
- left:85px;
-}
-
-.moveCoin3{  
- position: absolute;
- animation: CoinAnimate 1s;
- top:0px;
- left:170px;
-}
-.moveCoin4{  
- position: absolute;
- animation: CoinAnimate 1s;
- top:0px;
- left:255px;
-}
-
-.moveCoin5{  
- position: absolute;
- animation: CoinAnimate 1s;
- top:0px;
- left:340px;
-}
-
-.moveCoin6{  
- position: absolute;
- animation: CoinAnimate 1s;
- top:0px;
- left:425px;
-}
 
 
 @keyframes CoinAnimate2{
@@ -140,13 +108,13 @@ td {
 
 @keyframes CoinAnimate5{
     from {transform : translateY(0)}
-    to {transform : translateY(312px)}
+    to {transform : translateY(397px)}
 
 }
 
 @keyframes CoinAnimate6{
     from {transform : translateY(0)}
-    to {transform : translateY(390px)}
+    to {transform : translateY(475px)}
 
 }
 

@@ -193,39 +193,34 @@ function animateCoinInTd(indexJ,indexI){
         var imgAnim = document.createElement('img');
         imgAnim.src = setImgSource(stateColor);
         imgAnim.classList.add('grilleNode');
-        
-        imgAnim.classList.add(selectMoveCoinClass(parseInt(indexJ)));
-       
+        imgAnim.classList.add('moveCoin');
         imgAnim.style.zIndex=-1;
-       
-        
         document.getElementById('main').appendChild(imgAnim);
-        var mo = document.getElementsByClassName(selectMoveCoinClass(parseInt(indexJ)));
-      
+        var mo = document.getElementsByClassName('moveCoin');
         mo[0].style.left = "" + 85 * parseInt(indexJ)  + "px";
-       mo[0].style.animation = "CoinAnimate6 2s";
+        mo[0].style.animation = selectAnimCoinClass(indexI);
 }
 
-function selectMoveCoinClass(index){
+function selectAnimCoinClass(index){
     
     switch (index) {
         case 0:
-            return "moveCoin1"        
+            return ""        
             break;
         case 1:
-            return "moveCoin2"        
+            return "CoinAnimate2 1s"        
             break;
         case 2:
-            return "moveCoin3"        
+            return "CoinAnimate3 1s"        
             break;
         case 3:
-            return "moveCoin4"        
+            return "CoinAnimate4 1s"        
             break;
         case 4:
-            return "moveCoin5"        
+            return "CoinAnimate5 2s"        
             break;
         case 5:
-            return "moveCoin6"        
+            return "CoinAnimate6 2s"        
             break;
 
 
