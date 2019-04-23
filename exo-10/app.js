@@ -38,22 +38,8 @@ let grille = [
                 [EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL],
                 [EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL],
                 [EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL],
-            ];
-
-const fallLimitAnim = [
-  () => img.style.transform = "translateY(0, 0px)",
-  () => img.style.transform = "translateY(0, 77px)",
-  () => box.style.transform = "translate(0px, 155px)",
-  () => box.style.transform = "translate(0px, 233px)",
-  () => box.style.transform = "translate(0px, 312px)",
-  () => box.style.transform = "translate(0px, 390px)",
-
-]            
+            ];      
 /*-----------------------------------------------------------------------------------------------------*/
-
-
-
-
 
 /************************************* MAIN PROGRAM *************************************************************** */
 init();
@@ -130,9 +116,6 @@ function tableDraw(width,height,element,grille,Action,Drop) {
         }else{
             img.src = setImgSource(grille[i]);
         }
-        
-
-
       cell.appendChild(img);
       row.appendChild(cell);
       }
@@ -163,19 +146,21 @@ function dropCoin(){
         }
         
         animateCoinInTd(indexJ,indexI);
+        //handling animation
+        var self = this;
         setTimeout(function() {
         //we draw the board 
         tableDraw(WIDTH_GRILLE,HEIGHT_GRILLE,document.getElementById('main'),grille,ACTION,NO_DROP);        
+        //
+        checkWinState(grille,indexJ,indexI); 
+         // we change the stateColor
+         stateColor = switchStateColor(); 
+          //switch visual color player
+          self.src=sourceImg[stateColor];     
+        }, 500,self);
        
-        checkWinState(grille,indexJ,indexI);        
+          
         
-        
-        }, 1000);
-        // we change the stateColor
-        stateColor = switchStateColor(); 
-
-        //switch visual color player
-        this.src=sourceImg[stateColor]; 
   }
 function showCoin(){
     this.src=sourceImg[stateColor]; 
@@ -208,19 +193,19 @@ function selectAnimCoinClass(index){
             return ""        
             break;
         case 1:
-            return "CoinAnimate2 1s"        
+            return "CoinAnimate2 0.5s"        
             break;
         case 2:
-            return "CoinAnimate3 1s"        
+            return "CoinAnimate3 0.5s"        
             break;
         case 3:
-            return "CoinAnimate4 1s"        
+            return "CoinAnimate4 0.5s"        
             break;
         case 4:
-            return "CoinAnimate5 2s"        
+            return "CoinAnimate5 1s"        
             break;
         case 5:
-            return "CoinAnimate6 2s"        
+            return "CoinAnimate6 1s"        
             break;
 
 
