@@ -10,6 +10,7 @@ const PURPLE_RINGLESS   = 5;
 const HumaniseColor = { 4  : 'player Orange',5  : 'player Purple' };
 const cssColor = { 4  : '#FF4500',5  : '#9400D3' };
 
+const WIDTH_COIN = 85;
 //---------------------------
 const WIDTH_GRILLE      = 7;
 const HEIGHT_GRILLE     = 6;
@@ -51,9 +52,36 @@ init();
 /******************************************** FUNCTIONS **************************************************** */
 function init(){ 
     tableDraw(WIDTH_GRILLE,1,document.getElementById('header'),grilleAction,NO_ACTION,DROP);
+    grille = testDrawDiagonalIntern();
     tableDraw(WIDTH_GRILLE,HEIGHT_GRILLE,document.getElementById('main'),grille,ACTION,NO_DROP);
 }
+/**
+ * 
+ */
+function testDraw(){
+    return  [
+        [EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL],
+        [ORANGE_RINGLESS,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL],
+        [ORANGE_RINGLESS,EMPTY_CELL,EMPTY_CELL,ORANGE_RINGLESS,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL],
+        [ORANGE_RINGLESS,EMPTY_CELL,ORANGE_RINGLESS,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL],
+        [PURPLE_CELL,ORANGE_RINGLESS,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL],
+        [ORANGE_RINGLESS,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL],
+    ];
+}
+function testDrawDiagonalIntern(){
 
+return [
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 5, 5, 4, 0],
+        [0, 0, 0, 5, 4, 4, 0],
+        [0, 0, 5, 4, 5, 5, 0],
+        [0, 4, 5, 4, 4, 4, 5],
+       ]
+}
+/**
+ * 
+ */
 function cleanDraw(){
     return  [
                 [EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL],
@@ -64,7 +92,10 @@ function cleanDraw(){
                 [EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL],
             ];
 }
-
+/**
+ * 
+ * @param {*} element 
+ */
 function winMsg(element){
    var body = element;
    body.innerHTML = '';
@@ -82,7 +113,15 @@ function winMsg(element){
    body.appendChild(win);
    console.log(HumaniseColor[stateColor] + " Win this game.");
 }
-
+/**
+ * 
+ * @param {*} width 
+ * @param {*} height 
+ * @param {*} element 
+ * @param {*} grille 
+ * @param {*} Action 
+ * @param {*} Drop 
+ */
 function tableDraw(width,height,element,grille,Action,Drop) {
     //body reference   
     var main = element;
@@ -128,10 +167,16 @@ function tableDraw(width,height,element,grille,Action,Drop) {
     main.appendChild(tbl);
   
   }
+/**
+ * 
+ * @param {*} indexSource 
+ */  
 function setImgSource(indexSource){   
     return  sourceImg[indexSource];    
   }
-
+/**
+ * 
+ */
 function dropCoin(){
         let indexI = 0;
         let indxJ  =0;
@@ -162,10 +207,15 @@ function dropCoin(){
           
         
   }
+/**
+ * 
+*/
 function showCoin(){
     this.src=sourceImg[stateColor]; 
 }
-
+/**
+ * 
+ */
 function leaveCoin(){
     this.src=sourceImg[EMPTY_RINGLESS]; 
 }
@@ -182,10 +232,13 @@ function animateCoinInTd(indexJ,indexI){
         imgAnim.style.zIndex=-1;
         document.getElementById('main').appendChild(imgAnim);
         var mo = document.getElementsByClassName('moveCoin');
-        mo[0].style.left = "" + 85 * parseInt(indexJ)  + "px";
+        mo[0].style.left = "" + (WIDTH_COIN * parseInt(indexJ))  + "px";
         mo[0].style.animation = selectAnimCoinClass(indexI);
 }
-
+/**
+ * 
+ * @param {*} index 
+ */
 function selectAnimCoinClass(index){
     
     switch (index) {
@@ -214,7 +267,9 @@ function selectAnimCoinClass(index){
     }
 }
 
-
+/**
+ * 
+ */
 function switchStateColor(){
      if (stateColor == ORANGE_RINGLESS) {
         return PURPLE_RINGLESS;
@@ -223,13 +278,17 @@ function switchStateColor(){
      }
 
  }
-
+/**
+ * 
+ * @param {*} grille 
+ * @param {*} col 
+ * @param {*} row 
+ */
 function checkWinState(grille,col,row){
        // alert(col + ' - ' + row)
-        resultstack = horizontalCheck(grille,col,row)
+        resultstack =  verticalCheck(grille,col,row) || horizontalCheck(grille,col,row) || diagonalSlashCheck(grille,col,row); 
         if (resultstack){
               winMsg(document.body);
-
         }else{  
 
         }
@@ -241,46 +300,156 @@ function horizontalCheck(grille,col,row){
     let indexFirst = 0;
     col = parseInt(col);
     row = parseInt(row);
-     
-    for(x = 0 ; x < WIDTH_GRILLE;x++){
-           if (grille[row][x] == stateColor){
-                    indexFirst = x;
-                    break; 
-           }
-    }  
-    for (i = x ; i < WIDTH_GRILLE;i++){
-                if (grille[row][i] == stateColor){
-                    stackcolor++;
-                }else{
-                    break;
-                }
-    }
+    nbColorPlayer = 0; 
 
+    // nb jeton dans la ligne 
+    for(x = 0 ; x < WIDTH_GRILLE;x++){
+        if (grille[row][x] == stateColor){
+            nbColorPlayer++;
+                  
+        }
+    }
+    // si il y a matiere à verifier un win 
+    if (nbColorPlayer >= 4) {
+        for (i = 0 ; i <= 3 ;i++){
+            if (stackcolor == 4){
+                break;
+            } 
+            stackcolor = 0;
+           for (j = i; j <= (i + 3);j++ ){
+                if (grille[row][j] == stateColor){
+                    stackcolor++;
+                }
+           } 
+        }
+    }
     return (stackcolor == 4) ? true : false;         
  }
+ /**
+  * 
+  * @param {*} grille 
+  * @param {*} col 
+  * @param {*} row 
+  */
 function verticalCheck(grille,col,row){
-    stateColor   //player
     let stackcolor =0;
     let indexFirst = 0;
     col = parseInt(col);
-    row = parseInt(row);   
-
-    for(x = 0 ; x < HEIGHT_GRILLE;x++){
-           if (grille[X][col] == stateColor){
-                    indexFirst = x;
-                    break; 
-           }
-    }  
-    for (i = x ; i < HEIGHT_GRILLE;i++){
-                if (grille[i][col] == stateColor){
-                    stackcolor++;
-                }else{
-                    break;
-                }
+    row = parseInt(row);
+    nbColorPlayer = 0; 
+    // nb jeton dans la colonne 
+    for(x = HEIGHT_GRILLE-1 ; x > 0;x--){
+        if (grille[x][col] == stateColor){
+            nbColorPlayer++;              
+        }
     }
-return (stackcolor == 4) ? true : false;  
+    // si il y a matiere à verifier un win 
+    if (nbColorPlayer >= 4) {
+ 
+        for (i = HEIGHT_GRILLE -1 ; i >= 3 ;i--){
+            if (stackcolor == 4){
+                break;
+            } 
+            stackcolor = 0;
+           for (j = i; j >= (i - 3);j-- ){
+                if (grille[j][col] == stateColor){
+                    stackcolor++;
+                }
+           } 
+        }
+    }
+    return (stackcolor == 4) ? true : false;
  }
-function diagonalUpCheck(){}
-function diagonalDownCheck(){}
+/**
+ * 
+ * @param {*} grille 
+ * @param {*} col 
+ * @param {*} row 
+ */
+function diagonalSlashCheck(grille,col,row){
+    let stackcolor =0;
+    let indexFirst = 0;
+     col = parseInt(col);
+     row = parseInt(row);
+    let nbColorPlayer = 0; 
+    let offset = 0;
+    
+    let nextCheck = false;
+    
+    // nb jeton dans la diagonale partie droite
+    for(COLREF = 0; COLREF <= 3;COLREF++){
+        alert(nbColorPlayer);
+        if (nbColorPlayer == 4){
+            break;
+        }
+        nbColorPlayer = 0;
+        offset = COLREF;
+        //right corner    
+        for (row = HEIGHT_GRILLE -1 ; row >= 0;row--){
+            if (grille[row][offset] == stateColor){
+            nbColorPlayer++;         
+            }
+            offset++;     
+        }
+    }
 
+    
+
+
+    // si il y a matiere à verifier un win 
+    if (nbColorPlayer >= 4) {
+
+        for (row = HEIGHT_GRILLE -1 ; row >= 3 ;y--){
+            if (stackcolor == 4){
+                break;
+            }
+            stackcolor = 0;
+            offset = 0;
+            tempRow = row;
+           for (col = 0 ; col <= 3 ;col++){
+            
+                if (grille[tempRow][col] == stateColor){
+                    stackcolor++;
+                }
+                tempRow--;
+           } 
+        }
+    }
+    return (stackcolor == 4) ? true : false;         
+
+
+}
+
+
+function diagonalAntiSlashCheck(){}
+
+function testAscendingDiagonal(){
+    for(i = 3; i < 6; i++){
+        for(j = 0; j < 4; j++){
+            
+            if(grid[i][j] == 1 && grid[i-1][j+1] == 1 && grid[i-2][j+2] == 1 && grid[i-3][j+3] == 1){
+                return 1;
+            }
+            if(grid[i][j] == 2 && grid[i-1][j+1] == 2 && grid[i-2][j+2] == 2 && grid[i-3][j+3] == 2){
+                return 2;
+            }
+        }
+    }
+    return -1;
+}
+
+function testDescendingDiagonal(){
+    for( i = 0; i < 3; i++){
+        for(int j = 0; j < 4; j++){
+            System.out.println("["+i+";"+j+"];"+"["+(i+1)+";"+(j+1)+"];"+"["+(i+2)+";"+(j+2)+"];"+"["+(i+3)+";"+(j+3)+"]");
+            if(grid[i][j] == 1 && grid[i+1][j+1] == 1 && grid[i+2][j+2] == 1 && grid[i+3][j+3] == 1){
+                return 1;
+            }
+            if(grid[i][j] == 2 && grid[i+1][j+1] == 2 && grid[i+2][j+2] == 2 && grid[i+3][j+3] == 2){
+                return 2;
+            }
+        }
+    }
+    return -1;
+}
 
