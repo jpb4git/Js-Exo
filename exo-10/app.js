@@ -1,4 +1,4 @@
-let debug = false;
+let TestLauncher = true;
 
 const sourceImg = ['img/empty.svg','img/orange.svg','img/purple.svg','img/empty-ringLess.svg','img/orange-ringLess.svg','img/purple-ringLess.svg'];
 const EMPTY_CELL        = 0;
@@ -46,10 +46,10 @@ let grille = [
 /*-----------------------------------------------------------------------------------------------------*/
 
 /************************************* MAIN PROGRAM *************************************************************** */
-if (!debug){
+if (!TestLauncher){
     init();
 }
-//
+
 
 
 
