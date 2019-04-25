@@ -1,4 +1,4 @@
-let TestLauncher = true;
+let TestLauncher = false;
 
 const sourceImg = ['img/empty.svg','img/orange.svg','img/purple.svg','img/empty-ringLess.svg','img/orange-ringLess.svg','img/purple-ringLess.svg'];
 const EMPTY_CELL        = 0;
@@ -334,6 +334,8 @@ function horizontalCheck(grille,col,row){
         for (let i = 0 ; i <= 3 ;i++){
             if (stackcolor == 4){
                 break;
+            }else{
+                vectorWinPosition = [];
             } 
             stackcolor = 0;
             vectorWinPosition = [];
@@ -374,6 +376,9 @@ function verticalCheck(grille,col,row){
         for (let y = HEIGHT_GRILLE -1 ; y >= 3 ;y--){
             if (stackcolor == 4){
                 break;
+            }else{
+                 // memory position coin for rotate if win
+                 vectorWinPosition = [];
             } 
             stackcolor = 0;
            for (let j = y; j >= (y - 3);j-- ){
@@ -402,8 +407,8 @@ function diagonalSlashCheck(grille){
                 xx = x;
                 yy = y;
                 stackcolor =0;
-                if ((xx + 4 < WIDTH_GRILLE ) && (yy - 4 >= 0)  ) {
-                    for (let i = xx ; i < xx + 4 ; i++) {
+                if ((xx + 3 < WIDTH_GRILLE ) && (yy - 3 >= 0)  ) {
+                    for (let i = xx ; i <= xx + 3 ; i++) {
                       try{
                         if (grille[yy][i] == stateColor) {
                         stackcolor++;
@@ -443,8 +448,8 @@ function diagonalAntiSlashCheck(grille){
                 xx = x;
                 yy = y;
                 stackcolor =0;
-                if ((xx - 4 >= 0 ) && (yy - 4 >= 0)  ) {
-                    for (let i = xx ; i > xx - 4; i--) {
+                if ((xx - 3 >= 0 ) && (yy - 3 >= 0)  ) {
+                    for (let i = xx ; i >= xx - 3; i--) {
                       try{
                         if (grille[yy][i] == stateColor) {
                         stackcolor++;

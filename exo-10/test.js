@@ -177,6 +177,7 @@ let DriveTestSlash = [
             {name : "T14",'var':T14,result : true},
             {name : "T15",'var':T15,result : true}
         ];
+
 let DriveTestAntiSlash = [    
             {name : "T16",'var':T16,result : true},
             {name : "T17",'var':T17,result : true},
@@ -185,6 +186,7 @@ let DriveTestAntiSlash = [
         ];
 
 function LaunchTest(){
+
     console.log("\x1b[44m%s","//-------------------------------------------//");
     console.log("\x1b[44m%s","//---------------- HORIZONALS TESTS --------//");
     DriveTestHorizontal.forEach(element => {
@@ -226,6 +228,7 @@ function LaunchTest(){
 
     console.log("\x1b[44m%s","//-------------------------------------------//");
     console.log("\x1b[44m%s","//---------------- SLASH TESTS       --------//");
+
     DriveTestSlash.forEach(element => {
             console.log("                                       ");
             console.log("test : " + element.name);    
@@ -243,7 +246,7 @@ function LaunchTest(){
 
 
 console.log("\x1b[44m%s","//-------------------------------------------//");
-    console.log("\x1b[44m%s","//---------------- SLASH TESTS       --------//");
+    console.log("\x1b[44m%s","//---------------- ANTI SLASH TESTS       --------//");
     DriveTestAntiSlash.forEach(element => {
             console.log("                                       ");
             console.log("test : " + element.name);    
