@@ -67,7 +67,7 @@ function allProducts(data) {
 function setUserArray(jsdata, AllProduct) {
     var myType = document.getElementById('type').value
     var ShowNoStock = document.getElementById("noStock").checked;
-    // crate th json User selection
+    // create the json User selection
     jsdata.forEach((node) => {
         if(!AllProduct){
         if (myType === node.type || myType === node.traduction) {

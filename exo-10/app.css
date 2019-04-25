@@ -60,17 +60,22 @@ td {
       margin:auto;
 
   }
+  .winPositionRotate{
+    display: block;
+    
+    animation: rotateCoin 2s infinite;
+  }
   .win img{
       display: block;
       width:10%;
-      animation: example 2s infinite;
+      animation: rotateCoin 2s infinite;
   }
   .win h1, img{
       text-align: center;
       margin:auto;
   }
 
-  @keyframes example {
+  @keyframes rotateCoin {
     from {transform : rotateY(0deg)}
     to {transform : rotateY(360deg)}
 }

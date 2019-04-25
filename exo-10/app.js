@@ -1,3 +1,4 @@
+let debug = true;
 
 const sourceImg = ['img/empty.svg','img/orange.svg','img/purple.svg','img/empty-ringLess.svg','img/orange-ringLess.svg','img/purple-ringLess.svg'];
 const EMPTY_CELL        = 0;
@@ -45,8 +46,10 @@ let grille = [
 /*-----------------------------------------------------------------------------------------------------*/
 
 /************************************* MAIN PROGRAM *************************************************************** */
-
-init();
+if (!debug){
+    init();
+}
+//
 
 
 
@@ -74,17 +77,7 @@ function testDraw(){
 }
 
 
-function testDrawDiagonalIntern(){
 
-return [
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 4],
-        [0, 0, 0, 4, 0, 5, 5],
-        [0, 0, 0, 5, 4, 5, 4],
-        [0, 0, 0, 4, 5, 4, 4],
-        [0, 4, 5, 5, 5, 4, 4],
-       ]
-}
 /**
  * 
  */
@@ -115,7 +108,7 @@ function winMsg(element){
    img.src = setImgSource(stateColor);
    h1.appendChild(t);
    win.appendChild(h1);
-   win.appendChild(img);
+  // win.appendChild(img);
    body.appendChild(win);
    console.log(HumaniseColor[stateColor] + " Win this game.");
 }
@@ -147,6 +140,9 @@ function tableDraw(width,height,element,grille,Action,Drop) {
         var img = document.createElement("img");
         img.classList.add('grilleNode');
 
+        if (animateWinPosition(j,i)){
+            img.classList.add('winPositionRotate');
+        }
 
         //add event if i'm on table that handle img action drop
         if(Drop){
@@ -158,6 +154,7 @@ function tableDraw(width,height,element,grille,Action,Drop) {
         // 
         if (Action){
             img.src = setImgSource(grille[j][i]);
+           
         }else{
             img.src = setImgSource(grille[i]);
         }
@@ -208,7 +205,9 @@ function dropCoin(){
             //
 
             if (checkWinState(grille,indexJ,indexI)){
-                winMsg(document.querySelector('#header'))
+                winMsg(document.querySelector('#header'));
+                //animate vector winner
+                tableDraw(WIDTH_GRILLE,HEIGHT_GRILLE,document.getElementById('main'),grille,ACTION,NO_DROP);
             } else{
              // we change the stateColor
              stateColor = switchStateColor(); 
@@ -220,6 +219,18 @@ function dropCoin(){
        
           
         
+  }
+  /**
+   * 
+   */
+  function animateWinPosition(y,x){
+      let match = false
+       for (let i = 0 ; i < vectorWinPosition.length ;i++ ){
+        if ( vectorWinPosition[i].y == y && vectorWinPosition[i].x == x ){
+            return true;
+        }
+       }
+       return match;
   }
 /**
  * 
@@ -304,7 +315,7 @@ function checkWinState(grille,col,row){
  }
 
 function horizontalCheck(grille,col,row){
-   
+    vectorWinPosition = [];
     let stackcolor =0;
     let indexFirst = 0;
     col = parseInt(col);
@@ -329,10 +340,13 @@ function horizontalCheck(grille,col,row){
            for (let j = i; j <= (i + 3);j++ ){
                 if (grille[row][j] == stateColor){
                     stackcolor++;
-                    vectorWinPosition.push({row,j});
+                    vectorWinPosition.push({'y' : row,'x' : j});
                 }
            } 
         }
+    }
+    if (stackcolor !== 4){
+        vectorWinPosition =[];
     }
     return (stackcolor == 4) ? true : false;         
  }
@@ -343,6 +357,7 @@ function horizontalCheck(grille,col,row){
   * @param {*} row 
   */
 function verticalCheck(grille,col,row){
+    vectorWinPosition = [];
     let stackcolor =0;
     let indexFirst = 0;
     col = parseInt(col);
@@ -364,6 +379,7 @@ function verticalCheck(grille,col,row){
            for (let j = i; j >= (i - 3);j-- ){
                 if (grille[j][col] == stateColor){
                     stackcolor++;
+                    vectorWinPosition.push({'y' : j,'x' : col});
                 }
            } 
         }
@@ -373,24 +389,25 @@ function verticalCheck(grille,col,row){
 /**
  * 
  * @param {*} grille 
- * @param {*} col 
- * @param {*} row 
+ * 
  */
 function diagonalSlashCheck(grille){
+    vectorWinPosition = [];
     let stackcolor =0;
     let xx =0;
     let yy = 0;
     //bruteForce
-    for (let x =0 ; x < WIDTH_GRILLE  ; x++){
-        for (let y =0 ; y < HEIGHT_GRILLE ; y++){
+    for (let x = 0 ; x < WIDTH_GRILLE  ; x++){
+        for (let y = 0 ; y < HEIGHT_GRILLE ; y++){
                 xx = x;
                 yy = y;
                 stackcolor =0;
-                if ((xx + 4 < WIDTH_GRILLE ) && (yy - 4 > 0)  ) {
+                if ((xx + 4 < WIDTH_GRILLE ) && (yy - 4 >= 0)  ) {
                     for (let i = xx ; i < xx + 4 ; i++) {
                       try{
                         if (grille[yy][i] == stateColor) {
                         stackcolor++;
+                        vectorWinPosition.push({'y' : yy,'x' : i});
                         }
                       }catch(error){
                           console.log(error);
@@ -400,6 +417,8 @@ function diagonalSlashCheck(grille){
                 }
             if (stackcolor === 4) {
                 return true;
+            }else{
+                vectorWinPosition = []; 
             }
 
         }
@@ -409,8 +428,12 @@ function diagonalSlashCheck(grille){
     return (stackcolor === 4)
 }
 
-
+/**
+ * 
+ * @param {*} grille 
+ */
 function diagonalAntiSlashCheck(grille){
+    vectorWinPosition = [];
     let stackcolor =0;
     let xx =0;
     let yy = 0;
@@ -425,6 +448,7 @@ function diagonalAntiSlashCheck(grille){
                       try{
                         if (grille[yy][i] == stateColor) {
                         stackcolor++;
+                        vectorWinPosition.push({'y' : yy,'x' : i});
                         }
                       }catch(error){
                           console.log(error);
@@ -434,6 +458,8 @@ function diagonalAntiSlashCheck(grille){
                 }
             if (stackcolor === 4) {
                 return true;
+            }else{
+                vectorWinPosition = [];
             }
 
         }
@@ -443,5 +469,8 @@ function diagonalAntiSlashCheck(grille){
     return (stackcolor === 4)
 
 }
+
+//spider Algo À voir checkWin 
+// on check a partir du coin droppé.
 
 
