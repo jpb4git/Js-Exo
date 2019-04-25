@@ -21,7 +21,7 @@ td {
 
 #header{
     width: 640px;
-    
+    min-height : 84px;
     margin:auto;
     display: flex;
     flex-wrap: wrap;
@@ -51,18 +51,18 @@ td {
 
   .win{
       z-index: 1000;
-      position: fixed;
+     
       top :0;
       left : 0;
       opacity: 0.5;  
       width: 100vw;
-      height:100vh;
+      height:20vh;
       margin:auto;
 
   }
   .win img{
       display: block;
-      width:50%;
+      width:10%;
       animation: example 2s infinite;
   }
   .win h1, img{

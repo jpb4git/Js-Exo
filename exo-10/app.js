@@ -43,6 +43,7 @@ let grille = [
 /*-----------------------------------------------------------------------------------------------------*/
 
 /************************************* MAIN PROGRAM *************************************************************** */
+//testXY(testCount());
 init();
 
 
@@ -51,8 +52,9 @@ init();
 
 /******************************************** FUNCTIONS **************************************************** */
 function init(){ 
+
     tableDraw(WIDTH_GRILLE,1,document.getElementById('header'),grilleAction,NO_ACTION,DROP);
-    grille = testDrawDiagonalIntern();
+    //grille = testDrawDiagonalIntern();
     tableDraw(WIDTH_GRILLE,HEIGHT_GRILLE,document.getElementById('main'),grille,ACTION,NO_DROP);
 }
 /**
@@ -68,15 +70,32 @@ function testDraw(){
         [ORANGE_RINGLESS,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL],
     ];
 }
+function testCount(){
+
+return [
+        [1, 7, 0, 0, 0, 0, 0],
+        [2, 8, 0, 0, 0, 0, 4],
+        [3, 9, 0, 0, 0, 5, 5],
+        [4, 10, 0, 0, 4, 5, 4],
+        [5, 0, 0, 4, 0, 5, 4],
+        [6, 4, 5, 5, 0, 4, 4],
+       ]
+}
+function testXY(arr){
+     for (let x =0 ; x < WIDTH_GRILLE;x++){
+        for (let y =0 ; y < HEIGHT_GRILLE;y++){
+            console.log(arr[y][x]);
+        }}
+}
 function testDrawDiagonalIntern(){
 
 return [
         [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 5, 5, 4, 0],
-        [0, 0, 0, 5, 4, 4, 0],
-        [0, 0, 5, 4, 5, 5, 0],
-        [0, 4, 5, 4, 4, 4, 5],
+        [0, 0, 0, 0, 0, 0, 4],
+        [0, 0, 0, 4, 0, 5, 5],
+        [0, 0, 4, 0, 4, 5, 4],
+        [0, 4, 0, 4, 0, 5, 4],
+        [4, 4, 5, 5, 0, 4, 4],
        ]
 }
 /**
@@ -189,19 +208,27 @@ function dropCoin(){
                 break;
             }    
         }
-        
+
+
+        document.querySelector('#header').innerHTML ="";
+    
         animateCoinInTd(indexJ,indexI);
         //handling animation
         var self = this;
         setTimeout(function() {
-        //we draw the board 
-        tableDraw(WIDTH_GRILLE,HEIGHT_GRILLE,document.getElementById('main'),grille,ACTION,NO_DROP);        
-        //
-        checkWinState(grille,indexJ,indexI); 
-         // we change the stateColor
-         stateColor = switchStateColor(); 
-          //switch visual color player
-          self.src=sourceImg[stateColor];     
+            //we draw the board 
+            tableDraw(WIDTH_GRILLE,HEIGHT_GRILLE,document.getElementById('main'),grille,ACTION,NO_DROP);        
+            //
+
+            if (checkWinState(grille,indexJ,indexI)){
+                winMsg(document.querySelector('#header'))
+            } else{
+             // we change the stateColor
+             stateColor = switchStateColor(); 
+             tableDraw(WIDTH_GRILLE,1,document.getElementById('header'),grilleAction,NO_ACTION,DROP); 
+            }
+            
+             
         }, 500,self);
        
           
@@ -285,12 +312,10 @@ function switchStateColor(){
  * @param {*} row 
  */
 function checkWinState(grille,col,row){
-       // alert(col + ' - ' + row)
-        resultstack =  verticalCheck(grille,col,row) || horizontalCheck(grille,col,row) || diagonalSlashCheck(grille,col,row); 
+       return  resultstack =  verticalCheck(grille,col,row) || horizontalCheck(grille,col,row) || diagonalSlashCheck(grille); 
         if (resultstack){
-              winMsg(document.body);
-        }else{  
-
+            console.log('win ! ');
+              winMsg(document.querySelector('#header'));
         }
  }
 
@@ -366,90 +391,41 @@ function verticalCheck(grille,col,row){
  * @param {*} col 
  * @param {*} row 
  */
-function diagonalSlashCheck(grille,col,row){
+function diagonalSlashCheck(grille){
     let stackcolor =0;
-    let indexFirst = 0;
-     col = parseInt(col);
-     row = parseInt(row);
-    let nbColorPlayer = 0; 
-    let offset = 0;
-    
-    let nextCheck = false;
-    
-    // nb jeton dans la diagonale partie droite
-    for(COLREF = 0; COLREF <= 3;COLREF++){
-        alert(nbColorPlayer);
-        if (nbColorPlayer == 4){
-            break;
-        }
-        nbColorPlayer = 0;
-        offset = COLREF;
-        //right corner    
-        for (row = HEIGHT_GRILLE -1 ; row >= 0;row--){
-            if (grille[row][offset] == stateColor){
-            nbColorPlayer++;         
-            }
-            offset++;     
-        }
-    }
-
-    
-
-
-    // si il y a matiere à verifier un win 
-    if (nbColorPlayer >= 4) {
-
-        for (row = HEIGHT_GRILLE -1 ; row >= 3 ;y--){
-            if (stackcolor == 4){
-                break;
-            }
-            stackcolor = 0;
-            offset = 0;
-            tempRow = row;
-           for (col = 0 ; col <= 3 ;col++){
-            
-                if (grille[tempRow][col] == stateColor){
-                    stackcolor++;
+    let matchingTile = 1;
+    let tileCol =0;
+    let tileRow = 0;
+    //bruteForce
+    for (let x =0 ; x < WIDTH_GRILLE  ;x++){
+        for (let y =0 ; y < HEIGHT_GRILLE ;y++){
+                xx = x;
+                yy = y;
+                stackcolor =0;
+                if ((xx + 4 < WIDTH_GRILLE ) && (yy - 4 > 0)  ) {
+                    for (let i = xx ; i < xx + 4; i++) {
+                      try{
+                        if (grille[yy][i] == stateColor) {
+                        stackcolor++;
+                        }
+                      }catch(error){
+                          console.log(error);
+                      }  
+                          yy--;
+                    }
                 }
-                tempRow--;
-           } 
+            if (stackcolor === 4) {
+                return true;
+            }
+
         }
+      
     }
-    return (stackcolor == 4) ? true : false;         
 
-
+    return (stackcolor === 4)
 }
 
 
 function diagonalAntiSlashCheck(){}
 
-function testAscendingDiagonal(){
-    for(i = 3; i < 6; i++){
-        for(j = 0; j < 4; j++){
-            
-            if(grid[i][j] == 1 && grid[i-1][j+1] == 1 && grid[i-2][j+2] == 1 && grid[i-3][j+3] == 1){
-                return 1;
-            }
-            if(grid[i][j] == 2 && grid[i-1][j+1] == 2 && grid[i-2][j+2] == 2 && grid[i-3][j+3] == 2){
-                return 2;
-            }
-        }
-    }
-    return -1;
-}
-
-function testDescendingDiagonal(){
-    for( i = 0; i < 3; i++){
-        for(int j = 0; j < 4; j++){
-            System.out.println("["+i+";"+j+"];"+"["+(i+1)+";"+(j+1)+"];"+"["+(i+2)+";"+(j+2)+"];"+"["+(i+3)+";"+(j+3)+"]");
-            if(grid[i][j] == 1 && grid[i+1][j+1] == 1 && grid[i+2][j+2] == 1 && grid[i+3][j+3] == 1){
-                return 1;
-            }
-            if(grid[i][j] == 2 && grid[i+1][j+1] == 2 && grid[i+2][j+2] == 2 && grid[i+3][j+3] == 2){
-                return 2;
-            }
-        }
-    }
-    return -1;
-}
 
