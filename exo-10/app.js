@@ -21,6 +21,8 @@ const NO_ACTION         =false;
 const ACTION            =true;
 // set the turn for players. first play with orange coin  ... 
 let stateColor = ORANGE_RINGLESS;
+// tableau de vecteur des jetons gagnants
+let vectorWinPosition  = [];
 
 let grilleAction =[
                     EMPTY_RINGLESS,
@@ -78,9 +80,9 @@ return [
         [0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 4],
         [0, 0, 0, 4, 0, 5, 5],
-        [0, 0, 4, 0, 4, 5, 4],
-        [0, 4, 0, 4, 0, 5, 4],
-        [4, 4, 5, 5, 0, 4, 4],
+        [0, 0, 0, 5, 4, 5, 4],
+        [0, 0, 0, 4, 5, 4, 4],
+        [0, 4, 5, 5, 5, 4, 4],
        ]
 }
 /**
@@ -297,7 +299,7 @@ function switchStateColor(){
  * @param {*} row 
  */
 function checkWinState(grille,col,row){
-       return  resultstack =  verticalCheck(grille,col,row) || horizontalCheck(grille,col,row) || diagonalSlashCheck(grille); 
+       return  resultstack =  verticalCheck(grille,col,row) || horizontalCheck(grille,col,row) || diagonalSlashCheck(grille) || diagonalAntiSlashCheck(grille); 
        
  }
 
@@ -323,9 +325,11 @@ function horizontalCheck(grille,col,row){
                 break;
             } 
             stackcolor = 0;
+            vectorWinPosition = [];
            for (let j = i; j <= (i + 3);j++ ){
                 if (grille[row][j] == stateColor){
                     stackcolor++;
+                    vectorWinPosition.push({row,j});
                 }
            } 
         }
@@ -352,7 +356,6 @@ function verticalCheck(grille,col,row){
     }
     // si il y a matiere à verifier un win 
     if (nbColorPlayer >= 4) {
- 
         for (let i = HEIGHT_GRILLE -1 ; i >= 3 ;i--){
             if (stackcolor == 4){
                 break;
@@ -375,17 +378,16 @@ function verticalCheck(grille,col,row){
  */
 function diagonalSlashCheck(grille){
     let stackcolor =0;
-    let matchingTile = 1;
-    let tileCol =0;
-    let tileRow = 0;
+    let xx =0;
+    let yy = 0;
     //bruteForce
-    for (let x =0 ; x < WIDTH_GRILLE  ;x++){
-        for (let y =0 ; y < HEIGHT_GRILLE ;y++){
+    for (let x =0 ; x < WIDTH_GRILLE  ; x++){
+        for (let y =0 ; y < HEIGHT_GRILLE ; y++){
                 xx = x;
                 yy = y;
                 stackcolor =0;
                 if ((xx + 4 < WIDTH_GRILLE ) && (yy - 4 > 0)  ) {
-                    for (let i = xx ; i < xx + 4; i++) {
+                    for (let i = xx ; i < xx + 4 ; i++) {
                       try{
                         if (grille[yy][i] == stateColor) {
                         stackcolor++;
@@ -408,6 +410,38 @@ function diagonalSlashCheck(grille){
 }
 
 
-function diagonalAntiSlashCheck(){}
+function diagonalAntiSlashCheck(grille){
+    let stackcolor =0;
+    let xx =0;
+    let yy = 0;
+    //bruteForce
+    for (let x = WIDTH_GRILLE-1 ; x >= 0  ;x--){
+        for (let y = HEIGHT_GRILLE -1 ; y >= 0  ; y--){
+                xx = x;
+                yy = y;
+                stackcolor =0;
+                if ((xx - 4 >= 0 ) && (yy - 4 >= 0)  ) {
+                    for (let i = xx ; i > xx - 4; i--) {
+                      try{
+                        if (grille[yy][i] == stateColor) {
+                        stackcolor++;
+                        }
+                      }catch(error){
+                          console.log(error);
+                      }  
+                          yy--;
+                    }
+                }
+            if (stackcolor === 4) {
+                return true;
+            }
+
+        }
+      
+    }
+
+    return (stackcolor === 4)
+
+}
 
 
