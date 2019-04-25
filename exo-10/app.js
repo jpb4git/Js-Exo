@@ -43,7 +43,7 @@ let grille = [
 /*-----------------------------------------------------------------------------------------------------*/
 
 /************************************* MAIN PROGRAM *************************************************************** */
-//testXY(testCount());
+
 init();
 
 
@@ -70,23 +70,8 @@ function testDraw(){
         [ORANGE_RINGLESS,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL,EMPTY_CELL],
     ];
 }
-function testCount(){
 
-return [
-        [1, 7, 0, 0, 0, 0, 0],
-        [2, 8, 0, 0, 0, 0, 4],
-        [3, 9, 0, 0, 0, 5, 5],
-        [4, 10, 0, 0, 4, 5, 4],
-        [5, 0, 0, 4, 0, 5, 4],
-        [6, 4, 5, 5, 0, 4, 4],
-       ]
-}
-function testXY(arr){
-     for (let x =0 ; x < WIDTH_GRILLE;x++){
-        for (let y =0 ; y < HEIGHT_GRILLE;y++){
-            console.log(arr[y][x]);
-        }}
-}
+
 function testDrawDiagonalIntern(){
 
 return [
@@ -313,10 +298,7 @@ function switchStateColor(){
  */
 function checkWinState(grille,col,row){
        return  resultstack =  verticalCheck(grille,col,row) || horizontalCheck(grille,col,row) || diagonalSlashCheck(grille); 
-        if (resultstack){
-            console.log('win ! ');
-              winMsg(document.querySelector('#header'));
-        }
+       
  }
 
 function horizontalCheck(grille,col,row){
@@ -328,7 +310,7 @@ function horizontalCheck(grille,col,row){
     nbColorPlayer = 0; 
 
     // nb jeton dans la ligne 
-    for(x = 0 ; x < WIDTH_GRILLE;x++){
+    for(let x = 0 ; x < WIDTH_GRILLE;x++){
         if (grille[row][x] == stateColor){
             nbColorPlayer++;
                   
@@ -336,12 +318,12 @@ function horizontalCheck(grille,col,row){
     }
     // si il y a matiere à verifier un win 
     if (nbColorPlayer >= 4) {
-        for (i = 0 ; i <= 3 ;i++){
+        for (let i = 0 ; i <= 3 ;i++){
             if (stackcolor == 4){
                 break;
             } 
             stackcolor = 0;
-           for (j = i; j <= (i + 3);j++ ){
+           for (let j = i; j <= (i + 3);j++ ){
                 if (grille[row][j] == stateColor){
                     stackcolor++;
                 }
@@ -363,7 +345,7 @@ function verticalCheck(grille,col,row){
     row = parseInt(row);
     nbColorPlayer = 0; 
     // nb jeton dans la colonne 
-    for(x = HEIGHT_GRILLE-1 ; x > 0;x--){
+    for(let x = HEIGHT_GRILLE-1 ; x > 0;x--){
         if (grille[x][col] == stateColor){
             nbColorPlayer++;              
         }
@@ -371,12 +353,12 @@ function verticalCheck(grille,col,row){
     // si il y a matiere à verifier un win 
     if (nbColorPlayer >= 4) {
  
-        for (i = HEIGHT_GRILLE -1 ; i >= 3 ;i--){
+        for (let i = HEIGHT_GRILLE -1 ; i >= 3 ;i--){
             if (stackcolor == 4){
                 break;
             } 
             stackcolor = 0;
-           for (j = i; j >= (i - 3);j-- ){
+           for (let j = i; j >= (i - 3);j-- ){
                 if (grille[j][col] == stateColor){
                     stackcolor++;
                 }
