@@ -360,26 +360,26 @@ function verticalCheck(grille,col,row){
     vectorWinPosition = [];
     let stackcolor =0;
     let indexFirst = 0;
-    col = parseInt(col);
+    x = parseInt(col);
     row = parseInt(row);
     nbColorPlayer = 0; 
     // nb jeton dans la colonne 
-    for(let x = HEIGHT_GRILLE-1 ; x > 0;x--){
-        if (grille[x][col] == stateColor){
+    for(let y = HEIGHT_GRILLE-1 ; y >= 0;y--){
+        if (grille[y][x] == stateColor){
             nbColorPlayer++;              
         }
     }
     // si il y a matiere à verifier un win 
     if (nbColorPlayer >= 4) {
-        for (let i = HEIGHT_GRILLE -1 ; i >= 3 ;i--){
+        for (let y = HEIGHT_GRILLE -1 ; y >= 3 ;y--){
             if (stackcolor == 4){
                 break;
             } 
             stackcolor = 0;
-           for (let j = i; j >= (i - 3);j-- ){
-                if (grille[j][col] == stateColor){
+           for (let j = y; j >= (y - 3);j-- ){
+                if (grille[j][x] == stateColor){
                     stackcolor++;
-                    vectorWinPosition.push({'y' : j,'x' : col});
+                    vectorWinPosition.push({'y' : j,'x' : x});
                 }
            } 
         }
